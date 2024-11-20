@@ -37,7 +37,7 @@
 #endif
 
 namespace Utils {
-typedef int64_t msec_t;
+// typedef int64_t msec_t;
 
 void BufAppendInt16(uint8_t* buffer, int16_t number, int32_t* index);
 void BufAppendInt32(uint8_t* buffer, int32_t number, int32_t* index);
@@ -93,12 +93,7 @@ std::string _strfmt(const std::string& fmt, A&&... args) {
 }
 
 // Gets the time in ms
-// msec_t time_ms(void)
-// {
-//     struct timeval tv;
-//     gettimeofday(&tv, NULL);
-//     return (msec_t)tv.tv_sec * 1000 + tv.tv_usec / 1000;
-// }
+uint64_t TimeMS(void);
 
 // Formats a string the same way C snprintf does it,
 // returning the formatted string. This method can take

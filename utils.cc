@@ -159,3 +159,9 @@ double Utils::ShortestAngularDistance(double from, double to) {
         result = -((2.0 * M_PI) - result);
     return Utils::NormalizeAngle(result);
 }
+
+uint64_t Utils::TimeMS(void) {
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    return (uint64_t)tv.tv_sec * 1000 + tv.tv_usec / 1000;
+}
