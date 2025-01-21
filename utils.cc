@@ -1,14 +1,14 @@
 /**
  * cpputil
- * 
+ *
  * A collection of utilities that I have been copying
- * from project-to-project for past ~5 years. Finally, 
+ * from project-to-project for past ~5 years. Finally,
  * it is time to serialize in a "library".
- * 
+ *
  * This "library" owes much of its origin to my good
  * friend Paul Bailey. He and I worked significantly
- * with this code while working at NASA JSC. 
- * 
+ * with this code while working at NASA JSC.
+ *
  * Justus Languell     https://www.linkedin.com/in/justusl/
  * Paul Ryan Bailey    https://www.linkedin.com/in/paul-ryan-bailey/
  */
@@ -103,6 +103,7 @@ void Utils::BufAppendFloat32(uint8_t* buffer, float number, float scale, int32_t
     BufAppendInt32(buffer, (int32_t)(number * scale), index);
 }
 
+
 std::string Utils::CurrentDateTimeStr(const char* fmt) {
     time_t now = time(0);
     struct tm tstruct;
@@ -138,10 +139,13 @@ double Utils::ScheduleRate(
     }
     return std::chrono::duration_cast<std::chrono::milliseconds>(
                std::chrono::high_resolution_clock::now() - start_time)
-               .count() /
-           1000.0;
+               .count() / 1000.0;
 }
 
+/*
+ *
+ *
+ */
 double Utils::NormalizeAnglePositive(double angle) {
     return fmod(fmod(angle, (2.0 * M_PI)) + (2.0 * M_PI), (2.0 * M_PI));
 }
