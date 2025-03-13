@@ -92,9 +92,6 @@ std::string _strfmt(const std::string& fmt, A&&... args) {
     return std::string(buf.get(), buf.get() + size - 1);
 }
 
-// Gets the time in ms
-uint64_t TimeMS(void);
-
 // Formats a string the same way C snprintf does it,
 // returning the formatted string. This method can take
 // std::string objects as arguments (for the %s format).
@@ -152,6 +149,16 @@ double ScheduleRate(int rate, std::chrono::high_resolution_clock::time_point sta
 double NormalizeAnglePositive(double angle);
 double NormalizeAngle(double angle);
 double ShortestAngularDistance(double from, double to);
+
+using t_us = std::chrono::microseconds;
+using t_ms = std::chrono::milliseconds;
+
+template<typename A, typename T>
+inline A PreciseTime() 
+{
+    auto now = std::chrono::high_resolution_clock::now().time_since_epoch();
+    return static_cast<A>(std::chrono::duration_cast<T>(now).count());
+}
 
 };  // namespace Utils
 
